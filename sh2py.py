@@ -17,14 +17,22 @@ __module__      = ""
 
 def replace(shcript):
     midway = re.sub(".*bash.*\n", '', shcript)
-    midway = re.sub('beep', '', midway)
     midway = re.sub('[ ]{1,}', '', midway)
-    midway = re.sub('-f', ' ', midway)
-    midway = re.sub('-l', ' ', midway)
-    midway = re.sub('-D', ' ', midway)
+    #midway = re.sub('-f', ' ', midway)
+    #midway = re.sub('-l', ' ', midway)
+    #midway = re.sub('-D', ' ', midway)
 
     midway = re.sub('-n', '\n', midway)
-    return midway
+    midway = re.sub(".*exit.*\n", '', midway)
+    midway = re.sub('\n ', '\n', midway) # Get rid of spaces in front
+
+    finale = re.sub("\n\n", '', midway)
+
+    # Get rid of first newline if any #ugh
+    if not finale.splitlines()[0]:
+        superfinale = finale[1:]
+
+    return superfinale
 
 
 def main():
