@@ -19,11 +19,22 @@ def replace(shcript):
     midway = re.sub(".*bash.*\n", '', shcript)
     midway = re.sub('beep', '', midway)
     midway = re.sub('[ ]{1,}', '', midway)
-    #midway = re.sub('-f', ' ', midway)
-    #midway = re.sub('-l', ' ', midway)
-    #midway = re.sub('-D', ' ', midway)
+#    print(midway)
+    #exit()
+    print('if' not in midway[0:3])
+    if '-f' not in midway[0:3]:
+        midway = re.sub('-f', ', f:', midway)
+        midway = re.sub('-l', ', l:', midway)
+        midway = re.sub('-D', ', D:', midway)
+        templist = midway.splitlines()
+        print(templist)
+    else:
+        midway = re.sub('-f', ' ', midway)
+        midway = re.sub('-l', ' ', midway)
+        midway = re.sub('-D', ' ', midway)
 
     midway = re.sub('-n', '\n', midway)
+    midway = re.sub('\n,', '\n', midway)
     midway = re.sub(".*exit.*\n", '', midway)
     midway = re.sub('\n ', '\n', midway) # Get rid of spaces in front
 
