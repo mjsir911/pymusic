@@ -17,6 +17,7 @@ __module__      = ""
 
 def replace(shcript):
     midway = re.sub(".*bash.*\n", '', shcript)
+    midway = re.sub('beep', '', midway)
     midway = re.sub('[ ]{1,}', '', midway)
     #midway = re.sub('-f', ' ', midway)
     #midway = re.sub('-l', ' ', midway)
