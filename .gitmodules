@@ -1,0 +1,3 @@
+[submodule "Beep-Songs"]
+	path = Beep-Songs
+	url = git@github.com:adamrees89/Beep-Songs.git
